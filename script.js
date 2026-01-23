@@ -13,47 +13,79 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
-  // Common text settings
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
   // ----- NAME -----
-  ctx.font = "bold 64px Arial";
-  ctx.fillStyle = "white";
-  ctx.strokeStyle = "black";
-  ctx.lineWidth = 8;
-  ctx.shadowColor = "rgba(0,0,0,0.5)";
-  ctx.shadowBlur = 4;
-
-  // Slight curve: draw each letter with small rotation
+  ctx.font = "bold 64px Arial"; // replace with Varsity if loaded
   const startX = canvas.width / 2;
-  const startY = 650; // 5cm above neck approx
+  const startY = 650;
   const letters = name.split("");
   const letterSpacing = 55;
   const totalWidth = letters.length * letterSpacing;
   let x = startX - totalWidth / 2 + letterSpacing / 2;
+
   letters.forEach((char, i) => {
-    const angle = (i - letters.length / 2) * 0.03; // small curve
+    const angle = (i - letters.length / 2) * 0.03; // slight curve
     ctx.save();
     ctx.translate(x, startY);
     ctx.rotate(angle);
-    ctx.fillText(char, 0, 0);
+
+    // Drop shadow
+    ctx.shadowColor = "rgba(0,0,0,0.5)";
+    ctx.shadowBlur = 4;
+    ctx.shadowOffsetX = 4;
+    ctx.shadowOffsetY = 4;
+
+    // Outer black stroke
+    ctx.lineWidth = 8;
+    ctx.strokeStyle = "black";
     ctx.strokeText(char, 0, 0);
+
+    // Inner gold stroke
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "#FFD700"; // gold
+    ctx.strokeText(char, 0, 0);
+
+    // Fill white
+    ctx.fillStyle = "white";
+    ctx.fillText(char, 0, 0);
+
     ctx.restore();
     x += letterSpacing;
   });
 
   // ----- NUMBER -----
   ctx.font = "bold 140px Arial";
-  ctx.fillText(number, canvas.width / 2, 760);
-  ctx.strokeText(number, canvas.width / 2, 760);
+  const numberX = canvas.width / 2;
+  const numberY = 760;
+
+  // Drop shadow
+  ctx.shadowColor = "rgba(0,0,0,0.5)";
+  ctx.shadowBlur = 6;
+  ctx.shadowOffsetX = 6;
+  ctx.shadowOffsetY = 6;
+
+  // Outer black stroke
+  ctx.lineWidth = 16;
+  ctx.strokeStyle = "black";
+  ctx.strokeText(number, numberX, numberY);
+
+  // Inner gold stroke
+  ctx.lineWidth = 8;
+  ctx.strokeStyle = "#FFD700";
+  ctx.strokeText(number, numberX, numberY);
+
+  // Fill white
+  ctx.fillStyle = "white";
+  ctx.fillText(number, numberX, numberY);
 }
 
 // Live preview
 document.getElementById("nameInput").addEventListener("input", draw);
 document.getElementById("numberInput").addEventListener("input", draw);
 
-// Download button
+// Download
 function download() {
   const link = document.createElement("a");
   link.download = "my-jersey.png";
