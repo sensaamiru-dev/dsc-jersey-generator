@@ -5,37 +5,16 @@ const bg = new Image();
 bg.src = "assets/wallpaper.jpg";
 bg.onload = draw;
 
-function createGoldGradient(y, height) {
-  const g = ctx.createLinearGradient(0, y, 0, y + height);
-  g.addColorStop(0, "#fff7c2");
-  g.addColorStop(0.4, "#ffd700");
-  g.addColorStop(0.7, "#ffb300");
-  g.addColorStop(1, "#b8860b");
-  return g;
-}
-
-// Draw name as a single centered word (no spacing, no shadow, no black border)
+// Draw name — clean fill only
 function drawName(text, x, y) {
   ctx.font = "bold 72px 'Bebas Neue', Arial";
-  const gold = createGoldGradient(y - 40, 80);
-
-  ctx.lineWidth = 4;
-  ctx.strokeStyle = gold;
-  ctx.strokeText(text, x, y);
-
   ctx.fillStyle = "#fff";
   ctx.fillText(text, x, y);
 }
 
-// Draw centered number (no shadow, no black border)
+// Draw number — MUCH bigger, clean fill only
 function drawNumber(text, x, y) {
-  ctx.font = "bold 200px 'Bebas Neue', Arial";
-  const gold = createGoldGradient(y - 140, 280);
-
-  ctx.lineWidth = 8;
-  ctx.strokeStyle = gold;
-  ctx.strokeText(text, x, y);
-
+  ctx.font = "bold 300px 'Bebas Neue', Arial"; // bigger number
   ctx.fillStyle = "#fff";
   ctx.fillText(text, x, y);
 }
@@ -53,8 +32,8 @@ function draw() {
   // Name centered above chest
   drawName(name, canvas.width / 2, 520);
 
-  // Number centered
-  drawNumber(number, canvas.width / 2, canvas.height / 2 + 80);
+  // Number centered (big)
+  drawNumber(number, canvas.width / 2, canvas.height / 2 + 120);
 }
 
 // Live preview
