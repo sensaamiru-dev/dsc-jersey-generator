@@ -2,9 +2,86 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 const bg = new Image();
-bg.src = "assets/wallpaper.jpg"; // your uploaded wallpaper
-
+bg.src = "assets/wallpaper.jpg";
 bg.onload = draw;
+
+// Create gold metallic gradient
+function createGoldGradient(y, height) {
+  const g = ctx.createLinearGradient(0, y, 0, y + height);
+  g.addColorStop(0, "#fff7c2");
+  g.addColorStop(0.35, "#ffd700");
+  g.addColorStop(0.65, "#ffb300");
+  g.addColorStop(1, "#b8860b");
+  return g;
+}
+
+// Draw curved jersey name
+function drawCurvedName(text, centerX, y) {
+  ctx.font = "bold 72px 'Bebas Neue', Arial";
+  const spacing = 60;
+  const curve = 0.035;
+
+  const letters = text.split("");
+  const totalWidth = letters.length * spacing;
+  let x = centerX - totalWidth / 2 + spacing / 2;
+
+  letters.forEach((char, i) => {
+    const angle = (i - letters.length / 2) * curve;
+
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+
+    const gold = createGoldGradient(-40, 80);
+
+    ctx.shadowColor = "rgba(0,0,0,0.55)";
+    ctx.shadowBlur = 5;
+    ctx.shadowOffsetX = 4;
+    ctx.shadowOffsetY = 4;
+
+    // Outer black border
+    ctx.lineWidth = 9;
+    ctx.strokeStyle = "#000";
+    ctx.strokeText(char, 0, 0);
+
+    // Inner gold border
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = gold;
+    ctx.strokeText(char, 0, 0);
+
+    // Fill
+    ctx.fillStyle = "#fff";
+    ctx.fillText(char, 0, 0);
+
+    ctx.restore();
+    x += spacing;
+  });
+}
+
+// Draw center jersey number
+function drawNumber(text, x, y) {
+  ctx.font = "bold 190px 'Bebas Neue', Arial";
+  const gold = createGoldGradient(y - 120, 240);
+
+  ctx.shadowColor = "rgba(0,0,0,0.6)";
+  ctx.shadowBlur = 8;
+  ctx.shadowOffsetX = 6;
+  ctx.shadowOffsetY = 6;
+
+  // Outer black border
+  ctx.lineWidth = 18;
+  ctx.strokeStyle = "#000";
+  ctx.strokeText(text, x, y);
+
+  // Inner gold border
+  ctx.lineWidth = 8;
+  ctx.strokeStyle = gold;
+  ctx.strokeText(text, x, y);
+
+  // Fill
+  ctx.fillStyle = "#fff";
+  ctx.fillText(text, x, y);
+}
 
 function draw() {
   const name = document.getElementById("nameInput").value.toUpperCase() || "NAME";
@@ -16,76 +93,18 @@ function draw() {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  // ----- NAME -----
-  ctx.font = "bold 64px Arial"; // replace with Varsity if loaded
-  const startX = canvas.width / 2;
-  const startY = 650;
-  const letters = name.split("");
-  const letterSpacing = 55;
-  const totalWidth = letters.length * letterSpacing;
-  let x = startX - totalWidth / 2 + letterSpacing / 2;
+  // Name above chest
+  drawCurvedName(name, canvas.width / 2, 520);
 
-  letters.forEach((char, i) => {
-    const angle = (i - letters.length / 2) * 0.03; // slight curve
-    ctx.save();
-    ctx.translate(x, startY);
-    ctx.rotate(angle);
-
-    // Drop shadow
-    ctx.shadowColor = "rgba(0,0,0,0.5)";
-    ctx.shadowBlur = 4;
-    ctx.shadowOffsetX = 4;
-    ctx.shadowOffsetY = 4;
-
-    // Outer black stroke
-    ctx.lineWidth = 8;
-    ctx.strokeStyle = "black";
-    ctx.strokeText(char, 0, 0);
-
-    // Inner gold stroke
-    ctx.lineWidth = 4;
-    ctx.strokeStyle = "#FFD700"; // gold
-    ctx.strokeText(char, 0, 0);
-
-    // Fill white
-    ctx.fillStyle = "white";
-    ctx.fillText(char, 0, 0);
-
-    ctx.restore();
-    x += letterSpacing;
-  });
-
-  // ----- NUMBER -----
-  ctx.font = "bold 140px Arial";
-  const numberX = canvas.width / 2;
-  const numberY = 760;
-
-  // Drop shadow
-  ctx.shadowColor = "rgba(0,0,0,0.5)";
-  ctx.shadowBlur = 6;
-  ctx.shadowOffsetX = 6;
-  ctx.shadowOffsetY = 6;
-
-  // Outer black stroke
-  ctx.lineWidth = 16;
-  ctx.strokeStyle = "black";
-  ctx.strokeText(number, numberX, numberY);
-
-  // Inner gold stroke
-  ctx.lineWidth = 8;
-  ctx.strokeStyle = "#FFD700";
-  ctx.strokeText(number, numberX, numberY);
-
-  // Fill white
-  ctx.fillStyle = "white";
-  ctx.fillText(number, numberX, numberY);
+  // Number centered
+  drawNumber(number, canvas.width / 2, canvas.height / 2 + 80);
 }
 
 // Live preview
 document.getElementById("nameInput").addEventListener("input", draw);
 document.getElementById("numberInput").addEventListener("input", draw);
 
-// Download
+// Download image
 function download() {
   const link = document.createElement("a");
   link.download = "my-jersey.png";
