@@ -20,7 +20,7 @@ function drawName(text, x, y) {
   const gold = createGoldGradient(y - 40, 80);
 
   ctx.lineWidth = 4;
-  ctx.strokeStyle = black;
+  ctx.strokeStyle = gold;
   ctx.strokeText(text, x, y);
 
   ctx.fillStyle = "#fff";
@@ -29,7 +29,7 @@ function drawName(text, x, y) {
 
 // Draw centered number (no shadow, no black border)
 function drawNumber(text, x, y) {
-  ctx.font = "bold 400px 'Bebas Neue', Arial";
+  ctx.font = "bold 200px 'Bebas Neue', Arial";
   const gold = createGoldGradient(y - 140, 280);
 
   ctx.lineWidth = 8;
