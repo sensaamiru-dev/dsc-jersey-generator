@@ -34,7 +34,7 @@ h1 {
   font-size: 20px;
   border-radius: 6px;
   border: none;
-  background: linear-gradient(45deg, #ffd700, #ffb300);
+  background: #ffd700;
   color: #000;
   font-weight: bold;
   cursor: pointer;
