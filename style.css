@@ -40,10 +40,6 @@ h1 {
   cursor: pointer;
 }
 
-.controls button:hover {
-  transform: scale(1.05);
-}
-
 canvas {
   margin-top: 10px;
   border-radius: 10px;
