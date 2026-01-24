@@ -53,13 +53,19 @@ h1 {
   cursor: pointer;
 }
 
-/* Jersey picker container */
 .jersey-picker {
   display: flex;
   gap: 10px;
-  overflow-x: auto;   /* horizontal scroll */
+  overflow-x: auto;
+  flex-wrap: nowrap;
   padding: 8px 0;
-  flex-wrap: nowrap;  /* prevent wrapping into multiple rows */
+  justify-content: flex-start; /* default left on small screens */
+}
+
+@media (min-width: 768px) {
+  .jersey-picker {
+    justify-content: center; /* center on larger screens */
+  }
 }
 
 /* Thumbnails */
