@@ -1,13 +1,13 @@
 body {
-  background: #0f1115;
-  color: #fff;
-  font-family: 'Bebas Neue', Arial, sans-serif;
+  background: #0d1117;
+  color: white;
+  font-family: 'Anton', sans-serif;
   text-align: center;
   padding: 20px;
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 38px;
   margin-bottom: 10px;
 }
 
@@ -21,20 +21,20 @@ h1 {
 
 .controls input {
   padding: 10px 14px;
-  font-size: 20px;
+  font-size: 18px;
   border-radius: 6px;
   border: none;
-  width: 200px;
+  width: 180px;
   text-align: center;
 }
 
 .controls button {
-  padding: 11px 22px;
-  font-size: 20px;
+  padding: 10px 22px;
+  font-size: 18px;
   border-radius: 6px;
   border: none;
   background: gold;
-  color: #000;
+  color: black;
   font-weight: bold;
   cursor: pointer;
 }
@@ -42,14 +42,13 @@ h1 {
 .jersey-picker {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin: 12px 0 16px;
+  gap: 10px;
+  margin-bottom: 14px;
   flex-wrap: wrap;
 }
 
 .jersey-picker img {
-  width: 120px;
-  height: auto;
+  width: 110px;
   border-radius: 8px;
   cursor: pointer;
   border: 3px solid transparent;
@@ -65,9 +64,7 @@ h1 {
 }
 
 canvas {
-  margin-top: 10px;
+  max-width: 100%;
   border-radius: 10px;
   box-shadow: 0 0 25px rgba(0,0,0,0.8);
-  max-width: 100%;
-  height: auto;
 }
