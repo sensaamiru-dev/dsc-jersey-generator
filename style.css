@@ -62,12 +62,13 @@ h1 {
 }
 
 .jersey-picker img {
-  width: 110px;
+  width: 70px;      /* smaller thumbnails */
   border-radius: 8px;
   cursor: pointer;
   border: 3px solid transparent;
   transition: 0.2s;
 }
+
 
 .jersey-picker img.active {
   border-color: gold;
