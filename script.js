@@ -21,7 +21,15 @@ function selectJersey(src) {
 
 function draw() {
   const name = document.getElementById("nameInput").value.toUpperCase();
-  const number = document.getElementById("numberInput").value;
+  let number = document.getElementById("numberInput").value;
+
+  // ---- FORCE NUMBER BETWEEN 1–99 ----
+  if (number !== "") {
+    number = parseInt(number);
+    if (number < 1) number = 1;
+    if (number > 99) number = 99;
+    document.getElementById("numberInput").value = number;
+  }
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
