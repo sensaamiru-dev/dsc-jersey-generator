@@ -46,7 +46,7 @@ function draw() {
 
   // ----- NUMBER -----
   if (number) {
-    let fontSize = 220;
+    let fontSize = 200;
     ctx.font = `${fontSize}px Adidas2024`;
 
     while (ctx.measureText(number).width > canvas.width * 0.45) {
