@@ -1,37 +1,32 @@
+@font-face {
+  font-family: "Adidas2024";
+  src: url("fonts/Adidas2024.ttf") format("truetype");
+}
+
 body {
   background: #0d1117;
   color: white;
-  font-family: 'Anton', sans-serif;
+  font-family: Arial, sans-serif;
   text-align: center;
-  padding: 0;
   margin: 0;
 }
 
-/* 🔥 Blinking Gold Header */
 .top-header {
   background: black;
   color: gold;
   font-size: 22px;
-  padding: 12px 8px;
+  padding: 12px;
   font-weight: bold;
-  letter-spacing: 1px;
-  animation: glowBlink 1.2s infinite alternate;
-  text-shadow: 0 0 8px gold, 0 0 16px gold;
+  animation: blink 1.2s infinite alternate;
+  text-shadow: 0 0 10px gold;
 }
 
-@keyframes glowBlink {
-  from {
-    opacity: 1;
-    text-shadow: 0 0 6px gold, 0 0 12px gold;
-  }
-  to {
-    opacity: 0.4;
-    text-shadow: 0 0 18px gold, 0 0 30px gold;
-  }
+@keyframes blink {
+  from { opacity: 1; }
+  to { opacity: 0.4; }
 }
 
 h1 {
-  font-size: 34px;
   margin: 14px 0 10px;
 }
 
@@ -39,21 +34,21 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-bottom: 12px;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
 .controls input {
-  padding: 10px 14px;
+  padding: 10px;
   font-size: 18px;
+  width: 180px;
   border-radius: 6px;
   border: none;
-  width: 180px;
   text-align: center;
 }
 
 .controls button {
-  padding: 10px 22px;
+  padding: 10px 20px;
   font-size: 18px;
   border-radius: 6px;
   border: none;
@@ -67,7 +62,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 
@@ -79,10 +74,6 @@ h1 {
   transition: 0.2s;
 }
 
-.jersey-picker img:hover {
-  transform: scale(1.05);
-}
-
 .jersey-picker img.active {
   border-color: gold;
 }
@@ -90,6 +81,6 @@ h1 {
 canvas {
   max-width: 100%;
   border-radius: 10px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.8);
+  box-shadow: 0 0 20px rgba(0,0,0,0.8);
   margin-bottom: 20px;
 }
