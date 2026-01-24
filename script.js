@@ -33,12 +33,12 @@ function draw() {
   // ----- NAME -----
   if (name) {
     let fontSize = 45;
-    ctx.font = `${fontSize}px 'Bungee Tint'`;
+    ctx.font = `${fontSize}px 'Anton'`;
 
     // Auto-shrink long names
     while (ctx.measureText(name).width > canvas.width * 0.6) {
       fontSize--;
-      ctx.font = `${fontSize}px 'Bungee Tint'`;
+      ctx.font = `${fontSize}px 'Anton'`;
     }
 
     ctx.fillText(name, canvas.width / 2, canvas.height * NAME_Y_RATIO);
@@ -47,11 +47,11 @@ function draw() {
   // ----- NUMBER -----
   if (number) {
     let fontSize = 200;
-    ctx.font = `${fontSize}px 'Bungee Tint'`;
+    ctx.font = `${fontSize}px 'Anton'`;
 
     while (ctx.measureText(number).width > canvas.width * 0.45) {
       fontSize--;
-      ctx.font = `${fontSize}px 'Bungee Tint'`;
+      ctx.font = `${fontSize}px 'Anton'`;
     }
 
     ctx.fillText(number, canvas.width / 2, canvas.height * NUMBER_Y_RATIO);
