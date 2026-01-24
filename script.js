@@ -9,7 +9,7 @@ bg.onload = draw;
 
 // These values were measured from your reference image
 const NAME_Y_RATIO = 0.58;   // % of image height
-const NUMBER_Y_RATIO = 0.72;
+const NUMBER_Y_RATIO = 0.70;
 
 function selectJersey(src) {
   bg.src = src;
