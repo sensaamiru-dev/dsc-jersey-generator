@@ -22,16 +22,18 @@ function draw() {
 
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillStyle = "#fff";
+  ctx.fillStyle = "white";
 
+  // --- NAME (upper back panel) ---
   if (name) {
-    ctx.font = "bold 72px 'Bebas Neue', Arial";
-    ctx.fillText(name, canvas.width / 2, 520);
+    ctx.font = "bold 68px Anton";
+    ctx.fillText(name, canvas.width / 2, 510);
   }
 
+  // --- NUMBER (center torso) ---
   if (number) {
-    ctx.font = "bold 300px 'Bebas Neue', Arial";
-    ctx.fillText(number, canvas.width / 2, canvas.height / 2 + 120);
+    ctx.font = "bold 320px Anton";
+    ctx.fillText(number, canvas.width / 2, 780);
   }
 }
 
