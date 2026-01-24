@@ -8,8 +8,8 @@ document.fonts.load("10px Adidas2024").then(draw);
 bg.onload = draw;
 
 // These values were measured from your reference image
-const NAME_Y_RATIO = 0.36;   // % of image height
-const NUMBER_Y_RATIO = 0.57;
+const NAME_Y_RATIO = 0.60;   // % of image height
+const NUMBER_Y_RATIO = 0.68;
 
 function selectJersey(src) {
   bg.src = src;
