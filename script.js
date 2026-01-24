@@ -4,13 +4,6 @@ const ctx = canvas.getContext("2d");
 const bg = new Image();
 bg.src = "assets/jersey1.jpg";
 
-// Mobile-safe font loading
-const font = new FontFace('Adidas2014', 'url(assets/fonts/Adidas2014.woff2)');
-font.load().then(function(loadedFont) {
-  document.fonts.add(loadedFont); // add to document
-  draw();                        // draw canvas after font is loaded
-});
-
 // Ensure background image redraw triggers canvas
 bg.onload = draw;
 
@@ -40,12 +33,12 @@ function draw() {
   // ----- NAME -----
   if (name) {
     let fontSize = 45;
-    ctx.font = `${fontSize}px Adidas2014`;
+    ctx.font = `${fontSize}px 'Bungee Tint'`;
 
     // Auto-shrink long names
     while (ctx.measureText(name).width > canvas.width * 0.6) {
       fontSize--;
-      ctx.font = `${fontSize}px Adidas2014`;
+      ctx.font = `${fontSize}px 'Bungee Tint'`;
     }
 
     ctx.fillText(name, canvas.width / 2, canvas.height * NAME_Y_RATIO);
@@ -54,11 +47,11 @@ function draw() {
   // ----- NUMBER -----
   if (number) {
     let fontSize = 200;
-    ctx.font = `${fontSize}px Adidas2014`;
+    ctx.font = `${fontSize}px 'Bungee Tint'`;
 
     while (ctx.measureText(number).width > canvas.width * 0.45) {
       fontSize--;
-      ctx.font = `${fontSize}px Adidas2014`;
+      ctx.font = `${fontSize}px 'Bungee Tint'`;
     }
 
     ctx.fillText(number, canvas.width / 2, canvas.height * NUMBER_Y_RATIO);
