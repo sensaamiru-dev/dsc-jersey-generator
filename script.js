@@ -32,7 +32,7 @@ function draw() {
 
   // ----- NAME -----
   if (name) {
-    let fontSize = 62;
+    let fontSize = 55;
     ctx.font = `${fontSize}px Adidas2024`;
 
     // Auto-shrink long names
@@ -46,7 +46,7 @@ function draw() {
 
   // ----- NUMBER -----
   if (number) {
-    let fontSize = 320;
+    let fontSize = 150;
     ctx.font = `${fontSize}px Adidas2024`;
 
     while (ctx.measureText(number).width > canvas.width * 0.45) {
