@@ -53,22 +53,24 @@ h1 {
   cursor: pointer;
 }
 
+/* Jersey picker container */
 .jersey-picker {
   display: flex;
-  justify-content: center;
   gap: 10px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
+  overflow-x: auto;   /* horizontal scroll */
+  padding: 8px 0;
+  flex-wrap: nowrap;  /* prevent wrapping into multiple rows */
 }
 
+/* Thumbnails */
 .jersey-picker img {
-  width: 70px;      /* smaller thumbnails */
+  width: 70px;       /* adjust size */
+  flex-shrink: 0;    /* prevent shrinking smaller than 70px */
   border-radius: 8px;
   cursor: pointer;
   border: 3px solid transparent;
   transition: 0.2s;
 }
-
 
 .jersey-picker img.active {
   border-color: gold;
