@@ -24,16 +24,16 @@ function draw() {
   ctx.textBaseline = "middle";
   ctx.fillStyle = "white";
 
-  // --- NAME (upper back panel) ---
+  // NAME — tight under collar (matched to reference)
   if (name) {
-    ctx.font = "bold 68px Anton";
-    ctx.fillText(name, canvas.width / 2, 510);
+    ctx.font = "bold 58px Anton";
+    ctx.fillText(name, canvas.width / 2, 485);
   }
 
-  // --- NUMBER (center torso) ---
+  // NUMBER — centered on torso (matched to reference)
   if (number) {
-    ctx.font = "bold 320px Anton";
-    ctx.fillText(number, canvas.width / 2, 780);
+    ctx.font = "bold 300px Anton";
+    ctx.fillText(number, canvas.width / 2, 770);
   }
 }
 
