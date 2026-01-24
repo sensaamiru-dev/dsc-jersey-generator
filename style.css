@@ -9,21 +9,13 @@ body {
 .top-header {
   background: black;
   color: gold;
-  font-size: 28px;       /* larger for desktop */
+  font-size: clamp(18px, 4vw, 28px); /* scales between 18px and 28px */
   padding: 12px;
   font-weight: bold;
   animation: blink 1.2s infinite alternate;
   text-shadow: 0 0 10px gold;
   text-align: center;
   line-height: 1.2;
-}
-
-/* Mobile adjustments */
-@media (max-width: 600px) {
-  .top-header {
-    font-size: 18px;    /* smaller on mobile */
-    padding: 8px 6px;   /* reduce padding for smaller screens */
-  }
 }
 
 @keyframes blink {
