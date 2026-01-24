@@ -3,12 +3,10 @@ const ctx = canvas.getContext("2d");
 
 const bg = new Image();
 bg.src = "assets/jersey1.jpg";
-
-// Ensure background image redraw triggers canvas
 bg.onload = draw;
 
 // These values were measured from your reference image
-const NAME_Y_RATIO = 0.58;   // % of image height
+const NAME_Y_RATIO = 0.58;
 const NUMBER_Y_RATIO = 0.70;
 
 function selectJersey(src) {
@@ -37,7 +35,7 @@ function draw() {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  function drawVinylText(text, x, y, baseSize, maxWidthRatio) {
+  function drawVinyl(text, x, y, baseSize, maxWidthRatio) {
     let fontSize = baseSize;
     ctx.font = `${fontSize}px 'Anton'`;
     while (ctx.measureText(text).width > canvas.width * maxWidthRatio) {
@@ -47,86 +45,36 @@ function draw() {
 
     ctx.save();
 
-    // Fabric blend
-    ctx.globalCompositeOperation = "multiply";
-    ctx.fillStyle = "#ffffff";
-    ctx.fillText(text, x, y);
-    ctx.globalCompositeOperation = "source-over";
+    // Shadow (fabric depth)
+    ctx.fillStyle = "rgba(0,0,0,0.5)";
+    ctx.fillText(text, x + 3, y + 4);
 
-    // Emboss shadow
-    ctx.fillStyle = "rgba(0,0,0,0.45)";
-    ctx.fillText(text, x + 2, y + 3);
-
-    // Cut edge outline
+    // Outline (vinyl cut edge)
     ctx.lineWidth = baseSize * 0.045;
     ctx.strokeStyle = "black";
     ctx.strokeText(text, x, y);
 
+    // Main fill
+    ctx.fillStyle = "white";
+    ctx.fillText(text, x, y);
+
     // Vinyl shine
     const gradient = ctx.createLinearGradient(0, y - baseSize / 2, 0, y + baseSize / 2);
     gradient.addColorStop(0, "rgba(255,255,255,0.9)");
-    gradient.addColorStop(0.5, "rgba(255,255,255,0.2)");
+    gradient.addColorStop(0.5, "rgba(255,255,255,0.25)");
     gradient.addColorStop(1, "rgba(255,255,255,0.8)");
-
     ctx.fillStyle = gradient;
-    ctx.fillText(text, x, y - baseSize * 0.06);
-
-    // Final clean fill
-    ctx.fillStyle = "white";
-    ctx.fillText(text, x, y);
+    ctx.fillText(text, x, y - baseSize * 0.05);
 
     ctx.restore();
   }
 
   if (name) {
-    drawVinylText(name, canvas.width / 2, canvas.height * NAME_Y_RATIO, 45, 0.6);
+    drawVinyl(name, canvas.width / 2, canvas.height * NAME_Y_RATIO, 45, 0.6);
   }
 
   if (number) {
-    drawVinylText(number, canvas.width / 2, canvas.height * NUMBER_Y_RATIO, 200, 0.45);
-  }
-}
-
-  // ---- FORCE NUMBER BETWEEN 1–99 ----
-  if (number !== "") {
-    number = parseInt(number);
-    if (number < 1) number = 1;
-    if (number > 99) number = 99;
-    document.getElementById("numberInput").value = number;
-  }
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
-
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillStyle = "white";
-
-  // ----- NAME -----
-  if (name) {
-    let fontSize = 45;
-    ctx.font = `${fontSize}px 'Anton'`;
-
-    // Auto-shrink long names
-    while (ctx.measureText(name).width > canvas.width * 0.6) {
-      fontSize--;
-      ctx.font = `${fontSize}px 'Anton'`;
-    }
-
-    ctx.fillText(name, canvas.width / 2, canvas.height * NAME_Y_RATIO);
-  }
-
-  // ----- NUMBER -----
-  if (number) {
-    let fontSize = 200;
-    ctx.font = `${fontSize}px 'Anton'`;
-
-    while (ctx.measureText(number).width > canvas.width * 0.45) {
-      fontSize--;
-      ctx.font = `${fontSize}px 'Anton'`;
-    }
-
-    ctx.fillText(number, canvas.width / 2, canvas.height * NUMBER_Y_RATIO);
+    drawVinyl(number, canvas.width / 2, canvas.height * NUMBER_Y_RATIO, 200, 0.45);
   }
 }
 
