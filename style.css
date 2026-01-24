@@ -1,6 +1,10 @@
 @font-face {
-  font-family: "Adidas2024";
-  src: url("fonts/Adidas2024.ttf") format("truetype");
+  font-family: "Adidas2014";
+  src: url("assets/fonts/Adidas2014.woff2") format("woff2"),
+       url("assets/fonts/Adidas2014.woff") format("woff"),
+       url("assets/fonts/Adidas2014.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
