@@ -81,7 +81,7 @@ h1 {
 
 .jersey-picker {
   display: flex;
-  gap: 10px;
+  gap: 4px;
   overflow-x: auto;
   flex-wrap: nowrap;
   padding: 8px 0;
