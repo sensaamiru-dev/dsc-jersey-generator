@@ -3,10 +3,12 @@ const ctx = canvas.getContext("2d");
 
 const bg = new Image();
 bg.src = "assets/jersey1.jpg";
+
+// Ensure background image redraw triggers canvas
 bg.onload = draw;
 
 // These values were measured from your reference image
-const NAME_Y_RATIO = 0.58;
+const NAME_Y_RATIO = 0.58;   // % of image height
 const NUMBER_Y_RATIO = 0.70;
 
 function selectJersey(src) {
@@ -34,47 +36,33 @@ function draw() {
 
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
+  ctx.fillStyle = "white";
 
-  function drawVinyl(text, x, y, baseSize, maxWidthRatio) {
-    let fontSize = baseSize;
+  // ----- NAME -----
+  if (name) {
+    let fontSize = 45;
     ctx.font = `${fontSize}px 'Anton'`;
-    while (ctx.measureText(text).width > canvas.width * maxWidthRatio) {
+
+    // Auto-shrink long names
+    while (ctx.measureText(name).width > canvas.width * 0.6) {
       fontSize--;
       ctx.font = `${fontSize}px 'Anton'`;
     }
 
-    ctx.save();
-
-    // Shadow (fabric depth)
-    ctx.fillStyle = "rgba(0,0,0,0.5)";
-    ctx.fillText(text, x + 3, y + 4);
-
-    // Outline (vinyl cut edge)
-    ctx.lineWidth = baseSize * 0.045;
-    ctx.strokeStyle = "black";
-    ctx.strokeText(text, x, y);
-
-    // Main fill
-    ctx.fillStyle = "white";
-    ctx.fillText(text, x, y);
-
-    // Vinyl shine
-    const gradient = ctx.createLinearGradient(0, y - baseSize / 2, 0, y + baseSize / 2);
-    gradient.addColorStop(0, "rgba(255,255,255,0.9)");
-    gradient.addColorStop(0.5, "rgba(255,255,255,0.25)");
-    gradient.addColorStop(1, "rgba(255,255,255,0.8)");
-    ctx.fillStyle = gradient;
-    ctx.fillText(text, x, y - baseSize * 0.05);
-
-    ctx.restore();
+    ctx.fillText(name, canvas.width / 2, canvas.height * NAME_Y_RATIO);
   }
 
-  if (name) {
-    drawVinyl(name, canvas.width / 2, canvas.height * NAME_Y_RATIO, 45, 0.6);
-  }
-
+  // ----- NUMBER -----
   if (number) {
-    drawVinyl(number, canvas.width / 2, canvas.height * NUMBER_Y_RATIO, 200, 0.45);
+    let fontSize = 200;
+    ctx.font = `${fontSize}px 'Anton'`;
+
+    while (ctx.measureText(number).width > canvas.width * 0.45) {
+      fontSize--;
+      ctx.font = `${fontSize}px 'Anton'`;
+    }
+
+    ctx.fillText(number, canvas.width / 2, canvas.height * NUMBER_Y_RATIO);
   }
 }
 
