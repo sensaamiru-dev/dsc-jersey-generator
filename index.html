@@ -5,19 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Custom Jersey Generator</title>
 
-  <!-- Jersey Font -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <h1>Customize Your Jersey</h1>
+  <h1>Customize Your Dhuvaafaru Sports Club Jersey</h1>
 
   <div class="controls">
     <input id="nameInput" placeholder="PLAYER NAME" maxlength="12">
     <input id="numberInput" placeholder="NUMBER" type="number" min="0" max="99">
     <button onclick="download()">Download</button>
+  </div>
+
+  <h3>Select Jersey Design</h3>
+  <div class="jersey-picker">
+    <img src="assets/jersey1.jpg" onclick="selectJersey(this.src)">
+    <img src="assets/jersey2.jpg" onclick="selectJersey(this.src)">
+    <img src="assets/jersey3.jpg" onclick="selectJersey(this.src)">
+    <img src="assets/jersey4.jpg" onclick="selectJersey(this.src)">
+    <img src="assets/jersey5.jpg" onclick="selectJersey(this.src)">
   </div>
 
   <canvas id="canvas" width="1080" height="1350"></canvas>
