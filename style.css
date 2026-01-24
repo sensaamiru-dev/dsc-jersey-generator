@@ -30,11 +30,13 @@ h1 {
 }
 
 .subtitle {
-  font-size: 14px;       /* smaller than the heading */
-  color: #ccc;           /* light gray text */
-  margin-top: 6px;       /* space under the heading */
-  margin-bottom: 12px;   /* space before next element */
-  font-weight: hairline;   /* not bold like h1 */
+  font-family: 'Roboto', sans-serif; /* hairline font */
+  font-weight: 100;                   /* very thin */
+  font-size: 16px;                    /* smaller than heading */
+  color: #ccc;                        /* light gray */
+  margin-top: 6px;
+  margin-bottom: 12px;
+  text-align: center;                 /* center under heading */
 }
 
 .controls {
