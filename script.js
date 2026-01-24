@@ -56,7 +56,7 @@ function draw() {
 
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "#023020";
 
   if (name) {
     let fontSize = 45;
