@@ -55,9 +55,10 @@ h1 {
 
 .jersey-picker {
   display: flex;
+  justify-content: center;
   gap: 10px;
-  overflow-x: auto;   /* allow horizontal scroll */
-  padding: 8px 0;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
 .jersey-picker img {
