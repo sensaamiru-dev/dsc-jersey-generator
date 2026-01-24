@@ -110,7 +110,7 @@ h1 {
 
 canvas {
   display: block;
-  width: 420px;       /* Default desktop size */
+  width: 250px;       /* Default desktop size */
   max-width: 95vw;    /* Shrinks on smaller screens */
   height: auto;       /* Maintain aspect ratio */
   margin: 0 auto;     /* Center on page */
