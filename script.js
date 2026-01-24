@@ -3,34 +3,39 @@ const ctx = canvas.getContext("2d");
 
 const bg = new Image();
 bg.src = "assets/jersey1.jpg";
-bg.onload = draw;
 
 const NAME_Y_RATIO = 0.58;
 const NUMBER_Y_RATIO = 0.70;
 
-// 🔥 Make canvas responsive internally
-function resizeCanvas() {
-  const maxWidth = Math.min(window.innerWidth - 20, 500);
-  const aspectRatio = 1350 / 1080; // your jersey ratio
-
-  canvas.style.width = maxWidth + "px";
-  canvas.style.height = maxWidth * aspectRatio + "px";
+function setupCanvas() {
+  const container = canvas.parentElement;
+  const width = container.clientWidth || window.innerWidth - 20;
+  const aspect = 1350 / 1080;
 
   canvas.width = 1080;
   canvas.height = 1350;
 
+  canvas.style.width = width + "px";
+  canvas.style.height = width * aspect + "px";
+
   draw();
 }
 
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
+bg.onload = () => {
+  setupCanvas();
+};
+
+window.addEventListener("resize", setupCanvas);
+window.addEventListener("orientationchange", () => {
+  setTimeout(setupCanvas, 300);
+});
 
 function selectJersey(src) {
   bg.src = src;
   document.querySelectorAll(".jersey-picker img").forEach(img => {
     img.classList.toggle("active", img.src === src);
   });
-  bg.onload = draw;
+  bg.onload = setupCanvas;
 }
 
 function draw() {
