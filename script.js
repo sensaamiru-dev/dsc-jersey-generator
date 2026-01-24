@@ -36,6 +36,70 @@ function draw() {
 
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
+
+  function drawVinylText(text, x, y, baseSize, maxWidthRatio) {
+    let fontSize = baseSize;
+    ctx.font = `${fontSize}px 'Anton'`;
+    while (ctx.measureText(text).width > canvas.width * maxWidthRatio) {
+      fontSize--;
+      ctx.font = `${fontSize}px 'Anton'`;
+    }
+
+    ctx.save();
+
+    // Fabric blend
+    ctx.globalCompositeOperation = "multiply";
+    ctx.fillStyle = "#ffffff";
+    ctx.fillText(text, x, y);
+    ctx.globalCompositeOperation = "source-over";
+
+    // Emboss shadow
+    ctx.fillStyle = "rgba(0,0,0,0.45)";
+    ctx.fillText(text, x + 2, y + 3);
+
+    // Cut edge outline
+    ctx.lineWidth = baseSize * 0.045;
+    ctx.strokeStyle = "black";
+    ctx.strokeText(text, x, y);
+
+    // Vinyl shine
+    const gradient = ctx.createLinearGradient(0, y - baseSize / 2, 0, y + baseSize / 2);
+    gradient.addColorStop(0, "rgba(255,255,255,0.9)");
+    gradient.addColorStop(0.5, "rgba(255,255,255,0.2)");
+    gradient.addColorStop(1, "rgba(255,255,255,0.8)");
+
+    ctx.fillStyle = gradient;
+    ctx.fillText(text, x, y - baseSize * 0.06);
+
+    // Final clean fill
+    ctx.fillStyle = "white";
+    ctx.fillText(text, x, y);
+
+    ctx.restore();
+  }
+
+  if (name) {
+    drawVinylText(name, canvas.width / 2, canvas.height * NAME_Y_RATIO, 45, 0.6);
+  }
+
+  if (number) {
+    drawVinylText(number, canvas.width / 2, canvas.height * NUMBER_Y_RATIO, 200, 0.45);
+  }
+}
+
+  // ---- FORCE NUMBER BETWEEN 1–99 ----
+  if (number !== "") {
+    number = parseInt(number);
+    if (number < 1) number = 1;
+    if (number > 99) number = 99;
+    document.getElementById("numberInput").value = number;
+  }
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
   ctx.fillStyle = "white";
 
   // ----- NAME -----
