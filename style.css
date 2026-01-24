@@ -30,13 +30,21 @@ h1 {
 }
 
 .subtitle {
-  font-family: 'Roboto', sans-serif; /* hairline font */
-  font-weight: 100;                   /* very thin */
-  font-size: 16px;                    /* smaller than heading */
-  color: #ccc;                        /* light gray */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;       /* hairline on PC */
+  font-size: 16px;
+  color: #ccc;
   margin-top: 6px;
   margin-bottom: 12px;
-  text-align: center;                 /* center under heading */
+  text-align: center;
+}
+
+/* Mobile fix */
+@media (max-width: 480px) {
+  .subtitle {
+    font-weight: 300;     /* slightly thicker so it appears on mobile */
+    font-size: 14px;      /* optionally smaller for mobile */
+  }
 }
 
 .controls {
