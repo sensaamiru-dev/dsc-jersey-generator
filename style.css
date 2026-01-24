@@ -8,14 +8,14 @@ body {
 
 h1 {
   font-size: 42px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .controls {
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 
@@ -26,7 +26,6 @@ h1 {
   border: none;
   width: 200px;
   text-align: center;
-  outline: none;
 }
 
 .controls button {
@@ -34,10 +33,35 @@ h1 {
   font-size: 20px;
   border-radius: 6px;
   border: none;
-  background: #ffd700;
+  background: gold;
   color: #000;
   font-weight: bold;
   cursor: pointer;
+}
+
+.jersey-picker {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 12px 0 16px;
+  flex-wrap: wrap;
+}
+
+.jersey-picker img {
+  width: 120px;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: 0.2s;
+}
+
+.jersey-picker img:hover {
+  transform: scale(1.05);
+}
+
+.jersey-picker img.active {
+  border-color: gold;
 }
 
 canvas {
