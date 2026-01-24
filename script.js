@@ -8,8 +8,8 @@ document.fonts.load("10px Adidas2024").then(draw);
 bg.onload = draw;
 
 // These values were measured from your reference image
-const NAME_Y_RATIO = 0.55;   // % of image height
-const NUMBER_Y_RATIO = 0.68;
+const NAME_Y_RATIO = 0.58;   // % of image height
+const NUMBER_Y_RATIO = 0.75;
 
 function selectJersey(src) {
   bg.src = src;
@@ -46,7 +46,7 @@ function draw() {
 
   // ----- NUMBER -----
   if (number) {
-    let fontSize = 200;
+    let fontSize = 220;
     ctx.font = `${fontSize}px Adidas2024`;
 
     while (ctx.measureText(number).width > canvas.width * 0.45) {
