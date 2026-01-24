@@ -2,8 +2,16 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 const bg = new Image();
-bg.src = "assets/wallpaper.jpg";
+bg.src = "assets/jersey1.jpg";
 bg.onload = draw;
+
+function selectJersey(src) {
+  bg.src = src;
+  document.querySelectorAll(".jersey-picker img").forEach(img => {
+    img.classList.toggle("active", img.src === src);
+  });
+  bg.onload = draw;
+}
 
 function draw() {
   const name = document.getElementById("nameInput").value.toUpperCase();
@@ -16,7 +24,6 @@ function draw() {
   ctx.textBaseline = "middle";
   ctx.fillStyle = "#fff";
 
-  // Draw only if user typed
   if (name) {
     ctx.font = "bold 72px 'Bebas Neue', Arial";
     ctx.fillText(name, canvas.width / 2, 520);
