@@ -66,14 +66,16 @@ h1 {
   transform: scale(1.05);
 }
 
-/* On larger screens, make inputs inline */
+/* Desktop: keep row, center all items */
 @media (min-width: 600px) {
   .controls {
-    flex-direction: row;
+    flex-direction: row;       /* inline row */
+    justify-content: center;   /* center the entire row */
   }
+  
   .controls input,
   .controls button {
-    width: auto;
+    width: auto;               /* let inputs/buttons take their natural width */
   }
 }
 
