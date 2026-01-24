@@ -3,7 +3,13 @@ const ctx = canvas.getContext("2d");
 
 const bg = new Image();
 bg.src = "assets/jersey1.jpg";
+
+document.fonts.load("10px Adidas2024").then(draw);
 bg.onload = draw;
+
+// These values were measured from your reference image
+const NAME_Y_RATIO = 0.36;   // % of image height
+const NUMBER_Y_RATIO = 0.57;
 
 function selectJersey(src) {
   bg.src = src;
@@ -24,16 +30,31 @@ function draw() {
   ctx.textBaseline = "middle";
   ctx.fillStyle = "white";
 
-  // NAME — tight under collar (matched to reference)
+  // ----- NAME -----
   if (name) {
-    ctx.font = "bold 58px Anton";
-    ctx.fillText(name, canvas.width / 2, 485);
+    let fontSize = 62;
+    ctx.font = `${fontSize}px Adidas2024`;
+
+    // Auto-shrink long names
+    while (ctx.measureText(name).width > canvas.width * 0.6) {
+      fontSize--;
+      ctx.font = `${fontSize}px Adidas2024`;
+    }
+
+    ctx.fillText(name, canvas.width / 2, canvas.height * NAME_Y_RATIO);
   }
 
-  // NUMBER — centered on torso (matched to reference)
+  // ----- NUMBER -----
   if (number) {
-    ctx.font = "bold 300px Anton";
-    ctx.fillText(number, canvas.width / 2, 770);
+    let fontSize = 320;
+    ctx.font = `${fontSize}px Adidas2024`;
+
+    while (ctx.measureText(number).width > canvas.width * 0.45) {
+      fontSize--;
+      ctx.font = `${fontSize}px Adidas2024`;
+    }
+
+    ctx.fillText(number, canvas.width / 2, canvas.height * NUMBER_Y_RATIO);
   }
 }
 
