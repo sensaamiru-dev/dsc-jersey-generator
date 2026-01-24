@@ -34,7 +34,7 @@ h1 {
   color: #ccc;           /* light gray text */
   margin-top: 6px;       /* space under the heading */
   margin-bottom: 12px;   /* space before next element */
-  font-weight: thin;   /* not bold like h1 */
+  font-weight: hairline;   /* not bold like h1 */
 }
 
 .controls {
