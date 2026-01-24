@@ -3,13 +3,27 @@ const ctx = canvas.getContext("2d");
 
 const bg = new Image();
 bg.src = "assets/jersey1.jpg";
-
-// Ensure background image redraw triggers canvas
 bg.onload = draw;
 
-// These values were measured from your reference image
-const NAME_Y_RATIO = 0.58;   // % of image height
+const NAME_Y_RATIO = 0.58;
 const NUMBER_Y_RATIO = 0.70;
+
+// 🔥 Make canvas responsive internally
+function resizeCanvas() {
+  const maxWidth = Math.min(window.innerWidth - 20, 500);
+  const aspectRatio = 1350 / 1080; // your jersey ratio
+
+  canvas.style.width = maxWidth + "px";
+  canvas.style.height = maxWidth * aspectRatio + "px";
+
+  canvas.width = 1080;
+  canvas.height = 1350;
+
+  draw();
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
 
 function selectJersey(src) {
   bg.src = src;
@@ -20,10 +34,11 @@ function selectJersey(src) {
 }
 
 function draw() {
+  if (!bg.complete) return;
+
   const name = document.getElementById("nameInput").value.toUpperCase();
   let number = document.getElementById("numberInput").value;
 
-  // ---- FORCE NUMBER BETWEEN 1–99 ----
   if (number !== "") {
     number = parseInt(number);
     if (number < 1) number = 1;
@@ -38,30 +53,23 @@ function draw() {
   ctx.textBaseline = "middle";
   ctx.fillStyle = "white";
 
-  // ----- NAME -----
   if (name) {
     let fontSize = 45;
     ctx.font = `${fontSize}px 'Anton'`;
-
-    // Auto-shrink long names
     while (ctx.measureText(name).width > canvas.width * 0.6) {
       fontSize--;
       ctx.font = `${fontSize}px 'Anton'`;
     }
-
     ctx.fillText(name, canvas.width / 2, canvas.height * NAME_Y_RATIO);
   }
 
-  // ----- NUMBER -----
   if (number) {
     let fontSize = 200;
     ctx.font = `${fontSize}px 'Anton'`;
-
     while (ctx.measureText(number).width > canvas.width * 0.45) {
       fontSize--;
       ctx.font = `${fontSize}px 'Anton'`;
     }
-
     ctx.fillText(number, canvas.width / 2, canvas.height * NUMBER_Y_RATIO);
   }
 }
