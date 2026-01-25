@@ -31,7 +31,7 @@ h1 {
 
 .subtitle {
   font-family: 'Roboto', sans-serif;
-  font-weight: 100;       /* hairline on PC */
+  font-weight: 100;
   font-size: 16px;
   color: #ccc;
   margin-top: 6px;
@@ -39,17 +39,16 @@ h1 {
   text-align: center;
 }
 
-/* Mobile fix */
 @media (max-width: 480px) {
   .subtitle {
-    font-weight: 300;     /* slightly thicker so it appears on mobile */
-    font-size: 14px;      /* optionally smaller for mobile */
+    font-weight: 300;
+    font-size: 14px;
   }
 }
 
 .controls {
   display: flex;
-  flex-direction: column;  /* stack on mobile */
+  flex-direction: column;
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
@@ -58,7 +57,7 @@ h1 {
 .controls input {
   padding: 10px;
   font-size: 16px;
-  width: 80%;             /* responsive width */
+  width: 80%;
   max-width: 220px;
   border-radius: 6px;
   border: none;
@@ -70,12 +69,12 @@ h1 {
   font-size: 18px;
   border-radius: 8px;
   border: none;
-  background: gold;
-  color: black;
+  background: #119668;
+  color: white;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6); /* nice shadow */
-  width: 80%;             /* full width on mobile */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  width: 80%;
   max-width: 220px;
   transition: transform 0.2s;
 }
@@ -84,16 +83,15 @@ h1 {
   transform: scale(1.05);
 }
 
-/* Desktop: keep row, center all items */
 @media (min-width: 600px) {
   .controls {
-    flex-direction: row;       /* inline row */
-    justify-content: center;   /* center the entire row */
+    flex-direction: row;
+    justify-content: center;
   }
-  
+
   .controls input,
   .controls button {
-    width: auto;               /* let inputs/buttons take their natural width */
+    width: auto;
   }
 }
 
@@ -103,19 +101,12 @@ h1 {
   overflow-x: auto;
   flex-wrap: nowrap;
   padding: 8px 0;
-  justify-content: center; /* desktop also centered */
+  justify-content: center;
 }
 
-@media (min-width: 768px) {
-  .jersey-picker {
-    justify-content: center; /* center on larger screens */
-  }
-}
-
-/* Thumbnails */
 .jersey-picker img {
-  width: 70px;       /* adjust size */
-  flex-shrink: 0;    /* prevent shrinking smaller than 70px */
+  width: 70px;
+  flex-shrink: 0;
   border-radius: 8px;
   cursor: pointer;
   border: 3px solid transparent;
@@ -123,18 +114,19 @@ h1 {
 }
 
 .jersey-picker img.active {
-  border-color: gold;
+  border-color: #119668;
 }
 
 canvas {
   display: block;
-  width: 250px;       /* Default desktop size */
-  max-width: 95vw;    /* Shrinks on smaller screens */
-  height: auto;       /* Maintain aspect ratio */
-  margin: 0 auto;     /* Center on page */
+  width: 360px;
+  max-width: 95vw;
+  height: auto;
+  margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0,0,0,0.8);
 }
+
 .footer {
   margin-top: 25px;
   padding: 14px 10px;
@@ -152,7 +144,7 @@ canvas {
 }
 
 .footer-socials a {
-  color: gold;
+  color: #119668;
   font-size: 20px;
   transition: 0.2s ease;
 }
@@ -161,4 +153,3 @@ canvas {
   color: white;
   transform: scale(1.1);
 }
-
