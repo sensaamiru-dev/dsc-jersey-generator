@@ -85,8 +85,36 @@ document.getElementById("numberInput").addEventListener("input", draw);
 
 // Download
 function download() {
+  const dataUrl = canvas.toDataURL("image/png");
+
+  // iOS detection
+  if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    const win = window.open();
+    win.document.write(`
+      <style>
+        body { margin:0; background:#000; display:flex; flex-direction:column; align-items:center; }
+        img { max-width:100%; margin-top:40px; }
+        .toast {
+          position:fixed;
+          top:10px;
+          background:#119668;
+          color:white;
+          padding:10px 16px;
+          border-radius:20px;
+          font-family:Arial,sans-serif;
+          font-size:14px;
+          box-shadow:0 4px 12px rgba(0,0,0,0.6);
+        }
+      </style>
+      <div class="toast">Long-press the image to save 📱</div>
+      <img src="${dataUrl}">
+    `);
+    return;
+  }
+
+  // Normal browsers
   const link = document.createElement("a");
   link.download = "my-jersey.png";
-  link.href = canvas.toDataURL("image/png");
+  link.href = dataUrl;
   link.click();
 }
