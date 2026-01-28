@@ -97,11 +97,14 @@ h1 {
 
 .jersey-picker {
   display: flex;
-  gap: 2px;
+  gap: 6px;
   overflow-x: auto;
+  overflow-y: hidden;
   flex-wrap: nowrap;
-  padding: 8px 0;
+  padding: 10px 12px;
   justify-content: center;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
 .jersey-picker img {
@@ -111,6 +114,11 @@ h1 {
   cursor: pointer;
   border: 3px solid transparent;
   transition: 0.2s;
+  scroll-snap-align: center;
+}
+
+.jersey-picker::-webkit-scrollbar {
+  display: none;
 }
 
 .jersey-picker img.active {
