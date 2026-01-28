@@ -161,3 +161,57 @@ canvas {
   color: white;
   transform: scale(1.1);
 }
+
+.trophies {
+  position: relative;
+  display: inline-flex;
+  margin-left: 8px;
+}
+
+.trophies i {
+  margin-left: 6px;
+  font-size: 16px;
+  color: #119668;
+  text-shadow: 0 0 6px #119668;
+  animation: trophyBounce 1.6s infinite ease-in-out;
+}
+
+.trophies i:nth-child(2) { animation-delay: 0.2s; }
+.trophies i:nth-child(3) { animation-delay: 0.4s; }
+.trophies i:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes trophyBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* ✨ Sparkles */
+.sparkle::before,
+.sparkle::after {
+  content: "✨";
+  position: absolute;
+  font-size: 12px;
+  color: #7fffd4;
+  animation: sparkleFloat 2.5s infinite ease-in-out;
+  opacity: 0.8;
+}
+
+.sparkle::before {
+  left: -12px;
+  top: -6px;
+  animation-delay: 0s;
+}
+
+.sparkle::after {
+  right: -14px;
+  top: -8px;
+  animation-delay: 1.2s;
+}
+
+@keyframes sparkleFloat {
+  0%   { transform: translateY(0) scale(0.8); opacity: 0; }
+  30%  { opacity: 1; }
+  60%  { transform: translateY(-8px) scale(1); opacity: 0.9; }
+  100% { transform: translateY(-14px) scale(0.6); opacity: 0; }
+}
+
