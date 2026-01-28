@@ -102,8 +102,8 @@ h1 {
   overflow-y: hidden;
   flex-wrap: nowrap;
   padding: 10px 12px;
-  justify-content: center;
-  scroll-snap-type: x mandatory;
+  justify-content: flex-start;   /* 🔥 important */
+  width: 100%;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -114,8 +114,8 @@ h1 {
   cursor: pointer;
   border: 3px solid transparent;
   transition: 0.2s;
-  scroll-snap-align: center;
 }
+
 
 .jersey-picker::-webkit-scrollbar {
   display: none;
